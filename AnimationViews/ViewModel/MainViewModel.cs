@@ -16,6 +16,7 @@ namespace AnimationViews.ViewModel
             BtnMinmize = new RelayCommand(WinMinmize);
             BtnMaxsize = new RelayCommand(WinMaxSize);
             BtnClose = new RelayCommand(WindowClose);
+
         }
 
 

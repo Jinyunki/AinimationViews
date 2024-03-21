@@ -5,13 +5,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:AnimationViews"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:view="clr-namespace:AnimationViews.VIews"
     xmlns:viewmodel="clr-namespace:AnimationViews.ViewModel"
+    x:Name="MainUiBase"
     Title="MainWindow"
     Width="1800"
     Height="900"
     d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
     AllowsTransparency="True"
-    Background="White"
+    Background="Transparent"
     DataContext="{Binding Main, Source={StaticResource Locator}}"
     MouseDown="Window_MouseDown"
     WindowState="{Binding WindowState}"
@@ -28,17 +30,20 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40" />
+            <RowDefinition x:Name="topBar" Height="40" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <Grid
             x:Name="MenuTab"
             Grid.Row="1"
-            Width="250"
+            Width="200"
             Height="0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Background="{StaticResource DarkNavyGray}" />
+            Panel.ZIndex="5"
+            Background="{StaticResource DarkNavyGray}">
+            <view:VIew_Status />
+        </Grid>
 
         <Grid Grid.Row="0">
             <Grid.Triggers>
@@ -56,13 +61,23 @@
                 CornerRadius="5">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="200" />
                         <ColumnDefinition />
                         <ColumnDefinition Width="90" />
                         <ColumnDefinition Width="30" />
                     </Grid.ColumnDefinitions>
 
-                    <Border x:Name="menuBorderOpen" Style="{StaticResource BorderButtonStyle}">
+                    <Border
+                        Width="85"
+                        Height="2"
+                        Margin="2"
+                        VerticalAlignment="Bottom"
+                        Background="Silver" />
+                    <Border
+                        x:Name="menuBorderOpen"
+                        Background="#00000000"
+                        Style="{StaticResource BorderButtonStyle}"
+                        Visibility="Visible">
                         <TextBlock
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
@@ -134,6 +149,9 @@
             </Border>
         </Grid>
 
-        <ContentControl Content="{Binding CurrentViewModel, UpdateSourceTrigger=PropertyChanged}" />
+        <Grid Grid.Row="1" Background="White">
+            <ContentControl Content="{Binding CurrentViewModel, UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+
     </Grid>
 </Window>

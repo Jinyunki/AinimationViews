@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AnimationViews.Utiles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,14 +24,12 @@ namespace AnimationViews
         public MainWindow()
         {
             InitializeComponent();
+            Console.WriteLine("ContentGrid.ActualHeight>>>" + MainUiBase.Height);
+            var proxy = FindResource("AnimationProxyInstance") as AnimationProxy;
+            if (proxy != null) {
+                proxy.AnimatedValue = (double)MainUiBase.Height - 40d;
+            }
         }
-        /*private void Grid_MouseEnter(object sender, MouseEventArgs e) {
-            WinBtn.Visibility = Visibility.Visible;
-        }*/
-
-        /*private void Grid_MouseLeave(object sender, MouseEventArgs e) {
-            WinBtn.Visibility = Visibility.Hidden;
-        }*/
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed && Keyboard.IsKeyDown(Key.LeftCtrl))

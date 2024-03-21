@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="AnimationViews.VIews.VIew_Status"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AnimationViews.VIews" xmlns:datamodels="clr-namespace:AnimationViews.DataModels" d:DataContext="{d:DesignInstance Type=datamodels:MainModel}"
+             mc:Ignorable="d" 
+             Background="Transparent"
+             d:DesignHeight="900" d:DesignWidth="250">
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0"/>
+    </Grid>
+</UserControl>
