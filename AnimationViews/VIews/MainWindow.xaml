@@ -5,12 +5,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:AnimationViews"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="clr-namespace:AnimationViews.ViewModel"
     Title="MainWindow"
     Width="1800"
     Height="900"
+    d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
     AllowsTransparency="True"
-    Background="Transparent"
+    Background="White"
     DataContext="{Binding Main, Source={StaticResource Locator}}"
+    MouseDown="Window_MouseDown"
     WindowState="{Binding WindowState}"
     WindowStyle="None"
     mc:Ignorable="d">
@@ -21,7 +24,6 @@
                 <ResourceDictionary Source="Dictionary_ColorSet.xaml" />
                 <ResourceDictionary Source="Dictionary_Animation.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
@@ -29,12 +31,24 @@
             <RowDefinition Height="40" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-
         <Grid
-            Grid.Row="0"
-            Panel.ZIndex="3"
-            MouseEnter="Grid_MouseEnter"
-            MouseLeave="Grid_MouseLeave">
+            x:Name="MenuTab"
+            Grid.Row="1"
+            Width="250"
+            Height="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="{StaticResource DarkNavyGray}" />
+
+        <Grid Grid.Row="0">
+            <Grid.Triggers>
+                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                    <BeginStoryboard Storyboard="{StaticResource WinBtnVisible}" />
+                </EventTrigger>
+                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                    <BeginStoryboard Storyboard="{StaticResource WinBtnHide}" />
+                </EventTrigger>
+            </Grid.Triggers>
             <!--  Header - Top WindowBtn  -->
             <Border
                 Grid.Row="0"
@@ -42,30 +56,45 @@
                 CornerRadius="5">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="150" />
                         <ColumnDefinition />
                         <ColumnDefinition Width="90" />
                         <ColumnDefinition Width="30" />
                     </Grid.ColumnDefinitions>
 
-
-                    <Border
-                        Grid.Column="0"
-                        Width="85"
-                        Height="25"
-                        Background="Silver"
-                        CornerRadius="5">
+                    <Border x:Name="menuBorderOpen" Style="{StaticResource BorderButtonStyle}">
                         <TextBlock
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Text="Menu" />
+                            Foreground="Silver"
+                            Text="Menu Open" />
                         <Border.Triggers>
                             <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
-                                <BeginStoryboard Storyboard="{StaticResource SideTabStoryboardOpne}" />
+                                <BeginStoryboard Storyboard="{StaticResource MenuOpenAnimation}" />
                             </EventTrigger>
                         </Border.Triggers>
                     </Border>
-                    <Grid x:Name="WinBtn" Grid.Column="2">
+
+                    <Border
+                        x:Name="menuBorderClose"
+                        Style="{StaticResource BorderButtonStyle}"
+                        Visibility="Hidden">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Foreground="Silver"
+                            Text="Menu Close" />
+                        <Border.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+                                <BeginStoryboard Storyboard="{StaticResource MenuHideAnimation}" />
+                            </EventTrigger>
+                        </Border.Triggers>
+                    </Border>
+
+                    <Grid
+                        x:Name="WinBtn"
+                        Grid.Column="2"
+                        Visibility="Hidden">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30" />
                             <ColumnDefinition Width="30" />
@@ -101,15 +130,10 @@
                             FontSize="12"
                             Style="{StaticResource RoundedButtonStyle}" />
                     </Grid>
-
                 </Grid>
             </Border>
         </Grid>
-        <Grid
-            x:Name="sideTabs"
-            Grid.Row="1"
-            Width="20"
-            HorizontalAlignment="Left"
-            Background="{StaticResource DarkNavyGray}" />
+
+        <ContentControl Content="{Binding CurrentViewModel, UpdateSourceTrigger=PropertyChanged}" />
     </Grid>
 </Window>
