@@ -14,6 +14,7 @@ namespace AnimationViews.DataModels
         public ICommand BtnMinmize { get; set; }
         public ICommand BtnMaxsize { get; set; }
         public ICommand BtnClose { get; set; }
+
         private WindowState _windowState;
         public WindowState WindowState
         {
