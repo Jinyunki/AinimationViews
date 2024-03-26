@@ -72,8 +72,13 @@
     </ApplicationDefinition>
     <Compile Include="DataModels\MainModel.cs" />
     <Compile Include="Utiles\AnimationProxy.cs" />
+    <Compile Include="Utiles\StartAnimationMessage.cs" />
+    <Compile Include="ViewModel\FlowViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="VIews\View_Flow.xaml.cs">
+      <DependentUpon>View_Flow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VIews\VIew_Status.xaml.cs">
       <DependentUpon>VIew_Status.xaml</DependentUpon>
     </Compile>
@@ -101,6 +106,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="VIews\View_Flow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="VIews\VIew_Status.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

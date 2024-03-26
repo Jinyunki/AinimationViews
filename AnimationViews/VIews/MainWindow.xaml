@@ -26,6 +26,10 @@
                 <ResourceDictionary Source="Dictionary_ColorSet.xaml" />
                 <ResourceDictionary Source="Dictionary_Animation.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewmodel:FlowViewModel}">
+                <view:View_Flow />
+            </DataTemplate>
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
@@ -148,10 +152,7 @@
                 </Grid>
             </Border>
         </Grid>
-
-        <Grid Grid.Row="1" Background="White">
-            <ContentControl Content="{Binding CurrentViewModel, UpdateSourceTrigger=PropertyChanged}" />
-        </Grid>
+        <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel, UpdateSourceTrigger=PropertyChanged}" />
 
     </Grid>
 </Window>

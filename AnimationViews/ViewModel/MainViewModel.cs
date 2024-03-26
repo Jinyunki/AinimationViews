@@ -1,22 +1,19 @@
 using AnimationViews.DataModels;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
-using System.Windows.Input;
 
-namespace AnimationViews.ViewModel
-{
+namespace AnimationViews.ViewModel {
     public class MainViewModel : MainModel
     {
         public MainViewModel()
         {
+            CurrentViewModel = _locator.FlowViewModel;
             BtnMinmize = new RelayCommand(WinMinmize);
             BtnMaxsize = new RelayCommand(WinMaxSize);
             BtnClose = new RelayCommand(WindowClose);
-
         }
 
 

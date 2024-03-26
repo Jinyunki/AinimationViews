@@ -15,8 +15,7 @@
 using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
 
-namespace AnimationViews.ViewModel
-{
+namespace AnimationViews.ViewModel {
     /// <summary>
     /// This class contains static references to all the view models in the
     /// application and provides an entry point for the bindings.
@@ -42,6 +41,7 @@ namespace AnimationViews.ViewModel
             ////}
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<FlowViewModel>();
         }
 
         public MainViewModel Main
@@ -49,6 +49,13 @@ namespace AnimationViews.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
+            }
+        }
+        
+        public FlowViewModel FlowViewModel {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<FlowViewModel>();
             }
         }
 

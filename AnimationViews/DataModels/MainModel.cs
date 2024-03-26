@@ -10,6 +10,7 @@ using System.Windows.Input;
 
 namespace AnimationViews.DataModels {
     public class MainModel : ViewModelBase {
+        #region window Base Button Event
         public ICommand BtnMinmize { get; set; }
         public ICommand BtnMaxsize { get; set; }
         public ICommand BtnClose { get; set; }
@@ -20,10 +21,11 @@ namespace AnimationViews.DataModels {
             set {
                 if (_windowState != value) {
                     _windowState = value;
-                    RaisePropertyChanged();
+                    RaisePropertyChanged(nameof(WindowState));
                 }
             }
         }
+        #endregion
 
         public ViewModelLocator _locator = new ViewModelLocator();
         private ViewModelBase _currentViewModel;
