@@ -17,6 +17,7 @@ namespace AnimationViews.ViewModel {
     public class FlowViewModel : ViewModelBase {
         private CancellationTokenSource cancellationTokenSource;
         public string CommandFlag { get; set; }
+        public bool IsAsync { get; set; }
         public ICommand GreenCommand { get; set; }
         public ICommand YellowCommand { get; set; }
         public FlowViewModel() {
@@ -25,15 +26,27 @@ namespace AnimationViews.ViewModel {
         }
 
         private async void YellowEventHandling() {
-            CommandFlag = "Yellow";
-            cancellationTokenSource = new CancellationTokenSource();
-            await StartPeriodicWork(cancellationTokenSource.Token);
+            if (IsAsync) {
+                IsAsync = false;
+                StopEventHandling();
+            } else {
+                CommandFlag = "Yellow";
+                IsAsync = true;
+                cancellationTokenSource = new CancellationTokenSource();
+                await StartPeriodicWork(cancellationTokenSource.Token);
+            }
         }
 
         private async void GreenEventHandling() {
-            CommandFlag = "Green";
-            cancellationTokenSource = new CancellationTokenSource();
-            await StartPeriodicWork(cancellationTokenSource.Token);
+            if (IsAsync) {
+                IsAsync = false;
+                StopEventHandling();
+            } else {
+                CommandFlag = "Green";
+                IsAsync = true;
+                cancellationTokenSource = new CancellationTokenSource();
+                await StartPeriodicWork(cancellationTokenSource.Token);
+            }
         }
         private void StopEventHandling() {
             cancellationTokenSource?.Cancel();
@@ -42,19 +55,15 @@ namespace AnimationViews.ViewModel {
             while (!cancellationToken.IsCancellationRequested) {
                 try {
                     // 주기적으로 작업 수행
-                    Messenger.Default.Send(new StartAnimationMessage(CommandFlag));
+                    Messenger.Default.Send(new StartAnimationMessage(CommandFlag, IsAsync));
                     await Task.Delay(2000, cancellationToken);
                 } catch (TaskCanceledException) {
                     // 취소 요청이 발생하면 예외가 발생하므로, 여기서 작업 중단 처리를 수행할 수 있습니다.
                     // 필요한 경우 추가적인 작업을 수행할 수 있습니다.
-                    Console.WriteLine("TEST END " + DateTime.Now);
+                    Messenger.Default.Send(new StartAnimationMessage(CommandFlag, IsAsync));
                     break; // 작업 중단
                 }
             }
-        }
-        private void OnStartAnimation() {
-            // 애니메이션 시작 이벤트 발행
-            Messenger.Default.Send(new StartAnimationMessage(""));
         }
     }
 }

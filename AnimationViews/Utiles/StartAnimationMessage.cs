@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 namespace AnimationViews.Utiles {
     public class StartAnimationMessage {
         public string CommandFlag { get; set; }
-        public StartAnimationMessage(string commandFlag) {
+        public bool IsCommandFlag { get; set; }
+        public StartAnimationMessage(string commandFlag, bool isCommandFlag) {
             CommandFlag = commandFlag;
+            IsCommandFlag = isCommandFlag;
         }
     }
 }
