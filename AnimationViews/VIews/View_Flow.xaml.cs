@@ -28,9 +28,21 @@ namespace AnimationViews.VIews {
             Messenger.Default.Register<StartAnimationMessage>(this, OnStartAnimation);
         }
         private void OnStartAnimation(StartAnimationMessage message) {
+            switch (message.CommandFlag) {
+                case "Green":
+                    var storyboard = Resources["GreenBallSignal"] as Storyboard;
+                    storyboard.Begin();
+                    break;
+                case "Yellow":
+                    storyboard = Resources["MoveControlSignal"] as Storyboard;
+                    storyboard.Begin();
+                    break;
+                default:
+                    // Handle other cases if needed
+                    break;
+            }
             // 애니메이션 트리거
-            var storyboard = Resources["GreenBallSignal"] as Storyboard;
-            storyboard.Begin();
+            
         }
     }
 }

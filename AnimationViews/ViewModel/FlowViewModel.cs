@@ -16,19 +16,22 @@ using System.Windows.Media.Animation;
 namespace AnimationViews.ViewModel {
     public class FlowViewModel : ViewModelBase {
         private CancellationTokenSource cancellationTokenSource;
-        private ICommand _startAnimationCommand;
-        public ICommand StartAnimationCommand {
-            get { return _startAnimationCommand; }
-            set {
-                _startAnimationCommand = value;
-                RaisePropertyChanged(nameof(StartAnimationCommand));
-            }
+        public string CommandFlag { get; set; }
+        public ICommand GreenCommand { get; set; }
+        public ICommand YellowCommand { get; set; }
+        public FlowViewModel() {
+            GreenCommand = new RelayCommand(GreenEventHandling);
+            YellowCommand = new RelayCommand(YellowEventHandling);
         }
 
-        public FlowViewModel() {
-            StartAnimationCommand = new RelayCommand(StartEventHandling);
+        private async void YellowEventHandling() {
+            CommandFlag = "Yellow";
+            cancellationTokenSource = new CancellationTokenSource();
+            await StartPeriodicWork(cancellationTokenSource.Token);
         }
-        private async void StartEventHandling() {
+
+        private async void GreenEventHandling() {
+            CommandFlag = "Green";
             cancellationTokenSource = new CancellationTokenSource();
             await StartPeriodicWork(cancellationTokenSource.Token);
         }
@@ -39,7 +42,7 @@ namespace AnimationViews.ViewModel {
             while (!cancellationToken.IsCancellationRequested) {
                 try {
                     // 주기적으로 작업 수행
-                    Messenger.Default.Send(new StartAnimationMessage());
+                    Messenger.Default.Send(new StartAnimationMessage(CommandFlag));
                     await Task.Delay(2000, cancellationToken);
                 } catch (TaskCanceledException) {
                     // 취소 요청이 발생하면 예외가 발생하므로, 여기서 작업 중단 처리를 수행할 수 있습니다.
@@ -51,7 +54,7 @@ namespace AnimationViews.ViewModel {
         }
         private void OnStartAnimation() {
             // 애니메이션 시작 이벤트 발행
-            Messenger.Default.Send(new StartAnimationMessage());
+            Messenger.Default.Send(new StartAnimationMessage(""));
         }
     }
 }

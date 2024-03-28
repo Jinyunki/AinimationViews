@@ -24,58 +24,11 @@
                     <EasingDoubleKeyFrame KeyTime="00:00:02" Value="0" />
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
-            <Storyboard x:Key="MoveBallRow">
-                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="moveGrid" Storyboard.TargetProperty="(FrameworkElement.VerticalAlignment)">
-                    <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static VerticalAlignment.Top}" />
-                    <DiscreteObjectKeyFrame KeyTime="00:00:00.1" Value="{x:Static VerticalAlignment.Center}" />
-                    <DiscreteObjectKeyFrame KeyTime="00:00:00.2" Value="{x:Static VerticalAlignment.Bottom}" />
-
-                    <DiscreteObjectKeyFrame KeyTime="00:00:00.3" Value="{x:Static VerticalAlignment.Top}" />
-                    <DiscreteObjectKeyFrame KeyTime="00:00:00.4" Value="{x:Static VerticalAlignment.Center}" />
-                    <DiscreteObjectKeyFrame KeyTime="00:00:00.5" Value="{x:Static VerticalAlignment.Bottom}" />
-
-                    <DiscreteObjectKeyFrame KeyTime="00:00:00.6" Value="{x:Static VerticalAlignment.Top}" />
-                    <DiscreteObjectKeyFrame KeyTime="00:00:00.7" Value="{x:Static VerticalAlignment.Center}" />
-                    <DiscreteObjectKeyFrame KeyTime="00:00:00.8" Value="{x:Static VerticalAlignment.Bottom}" />
-
-                    <DiscreteObjectKeyFrame KeyTime="00:00:00.9" Value="{x:Static VerticalAlignment.Top}" />
-                    <DiscreteObjectKeyFrame KeyTime="00:00:01.0" Value="{x:Static VerticalAlignment.Center}" />
-                    <DiscreteObjectKeyFrame KeyTime="00:00:01.1" Value="{x:Static VerticalAlignment.Bottom}" />
-
-                    <DiscreteObjectKeyFrame KeyTime="00:00:01.2" Value="{x:Static VerticalAlignment.Top}" />
-                    <DiscreteObjectKeyFrame KeyTime="00:00:01.3" Value="{x:Static VerticalAlignment.Center}" />
-                    <DiscreteObjectKeyFrame KeyTime="00:00:01.4" Value="{x:Static VerticalAlignment.Bottom}" />
-
-                    <DiscreteObjectKeyFrame KeyTime="00:00:01.5" Value="{x:Static VerticalAlignment.Top}" />
-                    <DiscreteObjectKeyFrame KeyTime="00:00:01.6" Value="{x:Static VerticalAlignment.Center}" />
-                    <DiscreteObjectKeyFrame KeyTime="00:00:01.7" Value="{x:Static VerticalAlignment.Bottom}" />
-
-                    <DiscreteObjectKeyFrame KeyTime="00:00:01.8" Value="{x:Static VerticalAlignment.Top}" />
-                    <DiscreteObjectKeyFrame KeyTime="00:00:01.9" Value="{x:Static VerticalAlignment.Center}" />
-                    <DiscreteObjectKeyFrame KeyTime="00:00:02.0" Value="{x:Static VerticalAlignment.Bottom}" />
-
-                    <DiscreteObjectKeyFrame KeyTime="00:00:02.1" Value="{x:Static VerticalAlignment.Top}" />
-                    <DiscreteObjectKeyFrame KeyTime="00:00:02.2" Value="{x:Static VerticalAlignment.Center}" />
-                    <DiscreteObjectKeyFrame KeyTime="00:00:02.3" Value="{x:Static VerticalAlignment.Bottom}" />
-
-                    <DiscreteObjectKeyFrame KeyTime="00:00:02.4" Value="{x:Static VerticalAlignment.Top}" />
-                    <DiscreteObjectKeyFrame KeyTime="00:00:02.5" Value="{x:Static VerticalAlignment.Center}" />
-                    <DiscreteObjectKeyFrame KeyTime="00:00:02.6" Value="{x:Static VerticalAlignment.Bottom}" />
-
-
-                </ObjectAnimationUsingKeyFrames>
-                <Int32AnimationUsingKeyFrames Storyboard.TargetName="moveGrid" Storyboard.TargetProperty="(Grid.Row)">
-                    <EasingInt32KeyFrame KeyTime="00:00:00.2000000" Value="0" />
-                    <EasingInt32KeyFrame KeyTime="00:00:00.5000000" Value="1" />
-                    <EasingInt32KeyFrame KeyTime="00:00:00.8000000" Value="2" />
-                    <EasingInt32KeyFrame KeyTime="00:00:01.1000000" Value="3" />
-                    <EasingInt32KeyFrame KeyTime="00:00:01.4000000" Value="4" />
-                    <EasingInt32KeyFrame KeyTime="00:00:01.7000000" Value="5" />
-                    <EasingInt32KeyFrame KeyTime="00:00:02.0000000" Value="6" />
-                    <EasingInt32KeyFrame KeyTime="00:00:02.3000000" Value="7" />
-                    <EasingInt32KeyFrame KeyTime="00:00:02.6000000" Value="8" />
-                    <EasingInt32KeyFrame KeyTime="00:00:02.7000000" Value="9" />
-                </Int32AnimationUsingKeyFrames>
+            <Storyboard x:Key="MoveControlSignal">
+                <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="moveGrid" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                    <EasingThicknessKeyFrame KeyTime="00:00:00.00" Value="0,0,0,0"/>
+                    <EasingThicknessKeyFrame KeyTime="00:00:02.00" Value="0,700,0,0"/>
+                </ThicknessAnimationUsingKeyFrames>
             </Storyboard>
 
         </ResourceDictionary>
@@ -110,22 +63,13 @@
             </Grid>
 
             <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
                 <Grid
                     x:Name="moveGrid"
                     Grid.Row="0"
-                    HorizontalAlignment="Left">
+                    Width="60"
+                    Height="60"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top" Margin="0,0,0,0">
                     <Border
                         x:Name="moveBall"
                         Width="60"
@@ -152,12 +96,13 @@
             </Grid.ColumnDefinitions>
             <Button
                 Grid.Column="0"
-                Command="{Binding StartAnimationCommand}"
+                Command="{Binding GreenCommand}"
                 Content="Green"
                 FontSize="25"
                 Foreground="Green" />
             <Button
                 Grid.Column="1"
+                Command="{Binding YellowCommand}"
                 Content="Yellow"
                 FontSize="25"
                 Foreground="Yellow" />

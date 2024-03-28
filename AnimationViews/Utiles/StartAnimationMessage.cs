@@ -6,5 +6,9 @@ using System.Threading.Tasks;
 
 namespace AnimationViews.Utiles {
     public class StartAnimationMessage {
+        public string CommandFlag { get; set; }
+        public StartAnimationMessage(string commandFlag) {
+            CommandFlag = commandFlag;
+        }
     }
 }
