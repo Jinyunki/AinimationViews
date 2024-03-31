@@ -15,10 +15,10 @@ using System.Windows.Shapes;
 
 namespace AnimationViews.VIews {
     /// <summary>
-    /// VIew_Status.xaml에 대한 상호 작용 논리
+    /// MainManuTab.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class VIew_Status : UserControl {
-        public VIew_Status() {
+    public partial class MainManuTab : UserControl {
+        public MainManuTab() {
             InitializeComponent();
         }
     }

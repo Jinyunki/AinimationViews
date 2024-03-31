@@ -76,11 +76,14 @@
     <Compile Include="ViewModel\FlowViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="VIews\MainManuTab.xaml.cs">
+      <DependentUpon>MainManuTab.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VIews\View_Flow.xaml.cs">
       <DependentUpon>View_Flow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VIews\VIew_Status.xaml.cs">
-      <DependentUpon>VIew_Status.xaml</DependentUpon>
+    <Compile Include="VIews\View_TestPageOne.xaml.cs">
+      <DependentUpon>View_TestPageOne.xaml</DependentUpon>
     </Compile>
     <Page Include="VIews\Dictionary_Animation.xaml">
       <SubType>Designer</SubType>
@@ -91,6 +94,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="VIews\Dictionary_ColorSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VIews\MainManuTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -110,7 +117,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VIews\VIew_Status.xaml">
+    <Page Include="VIews\View_TestPageOne.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

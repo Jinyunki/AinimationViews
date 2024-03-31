@@ -30,6 +30,9 @@
             <DataTemplate DataType="{x:Type viewmodel:FlowViewModel}">
                 <view:View_Flow />
             </DataTemplate>
+            <DataTemplate>
+                <view:View_TestPageOne />
+            </DataTemplate>
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
@@ -46,7 +49,7 @@
             VerticalAlignment="Top"
             Panel.ZIndex="5"
             Background="{StaticResource DarkNavyGray}">
-            <view:VIew_Status />
+            <view:MainManuTab />
         </Grid>
 
         <Grid Grid.Row="0">

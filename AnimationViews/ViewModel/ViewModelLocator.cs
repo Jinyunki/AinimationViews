@@ -12,6 +12,7 @@
   See http://www.galasoft.ch/mvvm
 */
 
+using AnimationViews.VIews;
 using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
 
