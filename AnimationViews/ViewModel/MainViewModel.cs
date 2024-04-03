@@ -16,7 +16,11 @@ namespace AnimationViews.ViewModel {
             BtnClose = new RelayCommand(WindowClose);
 
             BtnGetFirstView = new RelayCommand(() => { CurrentViewModel = _locator.FlowViewModel; });
-            BtnTestOneView = new RelayCommand(() => { CurrentViewModel = _locator.TestOneViewModel; });
+            BtnTestOneView = new RelayCommand(ExcuteTestOneView);
+        }
+
+        private void ExcuteTestOneView() {
+            CurrentViewModel = _locator.TestOneViewModel;
         }
 
         #region
