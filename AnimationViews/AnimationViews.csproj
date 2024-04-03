@@ -75,6 +75,7 @@
     <Compile Include="Utiles\StartAnimationMessage.cs" />
     <Compile Include="ViewModel\FlowViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\TestOneViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="VIews\MainManuTab.xaml.cs">
       <DependentUpon>MainManuTab.xaml</DependentUpon>

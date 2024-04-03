@@ -30,9 +30,10 @@
             <DataTemplate DataType="{x:Type viewmodel:FlowViewModel}">
                 <view:View_Flow />
             </DataTemplate>
-            <DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodel:TestOneViewModel}">
                 <view:View_TestPageOne />
             </DataTemplate>
+            
         </ResourceDictionary>
     </Window.Resources>
     <Grid>

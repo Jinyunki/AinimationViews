@@ -35,7 +35,7 @@
             Width="55"
             Height="35"
             Background="White"
-            Command="{Binding BtnMainView}"
+            Command="{Binding BtnGetFirstView}"
             Content="Main"
             Foreground="Silver"
             Style="{StaticResource RoundedButtonStyle}" />

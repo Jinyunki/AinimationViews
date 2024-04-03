@@ -14,9 +14,12 @@ namespace AnimationViews.ViewModel {
             BtnMinmize = new RelayCommand(WinMinmize);
             BtnMaxsize = new RelayCommand(WinMaxSize);
             BtnClose = new RelayCommand(WindowClose);
+
+            BtnGetFirstView = new RelayCommand(() => { CurrentViewModel = _locator.FlowViewModel; });
+            BtnTestOneView = new RelayCommand(() => { CurrentViewModel = _locator.TestOneViewModel; });
         }
 
-
+        #region
         // Window Minimize
         private void WinMinmize()
         {
@@ -30,7 +33,6 @@ namespace AnimationViews.ViewModel {
                 throw;
             }
         }
-
         // Window Size
         private void WinMaxSize()
         {
@@ -46,6 +48,7 @@ namespace AnimationViews.ViewModel {
             }
 
         }
+        // Window ShutDown
         private void WindowClose()
         {
 
@@ -61,5 +64,6 @@ namespace AnimationViews.ViewModel {
             }
 
         }
+        #endregion
     }
 }

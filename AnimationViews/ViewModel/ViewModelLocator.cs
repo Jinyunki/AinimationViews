@@ -43,6 +43,7 @@ namespace AnimationViews.ViewModel {
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<FlowViewModel>();
+            SimpleIoc.Default.Register<TestOneViewModel>();
         }
 
         public MainViewModel Main
@@ -57,6 +58,12 @@ namespace AnimationViews.ViewModel {
             get
             {
                 return ServiceLocator.Current.GetInstance<FlowViewModel>();
+            }
+        }
+        public TestOneViewModel TestOneViewModel {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<TestOneViewModel>();
             }
         }
 
