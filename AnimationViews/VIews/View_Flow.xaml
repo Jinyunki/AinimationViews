@@ -27,7 +27,10 @@
             <Storyboard x:Key="MoveControlSignal">
                 <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="moveGrid" Storyboard.TargetProperty="(FrameworkElement.Margin)">
                     <EasingThicknessKeyFrame KeyTime="00:00:00.00" Value="0,0,0,0"/>
-                    <EasingThicknessKeyFrame KeyTime="00:00:02.00" Value="0,700,0,0"/>
+                    <EasingThicknessKeyFrame KeyTime="00:00:00.50" Value="0,700,0,0"/>
+                    <EasingThicknessKeyFrame KeyTime="00:00:01.00" Value="540,700,0,0"/>
+                    <EasingThicknessKeyFrame KeyTime="00:00:01.50" Value="540,00,0,0"/>
+                    <EasingThicknessKeyFrame KeyTime="00:00:02.00" Value="00,00,0,0"/>
                 </ThicknessAnimationUsingKeyFrames>
             </Storyboard>
 

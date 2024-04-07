@@ -48,8 +48,6 @@ namespace AnimationViews.VIews {
                     // Handle other cases if needed
                     break;
             }
-            // 애니메이션 트리거
-            
         }
     }
 }

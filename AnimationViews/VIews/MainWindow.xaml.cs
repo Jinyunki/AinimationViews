@@ -1,4 +1,5 @@
 ﻿using AnimationViews.Utiles;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,21 +21,18 @@ namespace AnimationViews
     /// <summary>
     /// MainWindow.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
+    public partial class MainWindow : Window {
+        public MainWindow() {
             InitializeComponent();
-            Console.WriteLine("ContentGrid.ActualHeight>>>" + MainUiBase.Height);
+            //Console.WriteLine("ContentGrid.ActualHeight>>>" + MainUiBase.Height);
             var proxy = FindResource("AnimationProxyInstance") as AnimationProxy;
             if (proxy != null) {
                 proxy.AnimatedValue = (double)MainUiBase.Height - 40d;
             }
+
         }
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed && Keyboard.IsKeyDown(Key.LeftCtrl))
-            {
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e) {
+            if (e.LeftButton == MouseButtonState.Pressed && Keyboard.IsKeyDown(Key.LeftCtrl)) {
                 DragMove();
             }
         }

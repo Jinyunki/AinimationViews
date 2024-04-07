@@ -33,12 +33,6 @@
             <DataTemplate DataType="{x:Type viewmodel:TestOneViewModel}">
                 <view:View_TestPageOne />
             </DataTemplate>
-            
-            <Storyboard x:Key="SlideInFromRightStoryboard">
-                <DoubleAnimation From="500" To="0" Duration="0:0:0.5"
-                         Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
-                         AccelerationRatio="0.5" DecelerationRatio="0.5" />
-            </Storyboard>
         </ResourceDictionary>
         
     </Window.Resources>

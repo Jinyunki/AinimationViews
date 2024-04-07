@@ -20,6 +20,7 @@ namespace AnimationViews.ViewModel {
         public bool IsAsync { get; set; }
         public ICommand GreenCommand { get; set; }
         public ICommand YellowCommand { get; set; }
+
         public FlowViewModel() {
             GreenCommand = new RelayCommand(GreenEventHandling);
             YellowCommand = new RelayCommand(YellowEventHandling);

@@ -1,13 +1,19 @@
 using AnimationViews.DataModels;
+using AnimationViews.Utiles;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Diagnostics;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace AnimationViews.ViewModel {
-    public class MainViewModel : MainModel
-    {
+    public class MainViewModel : MainModel {
+        private CancellationTokenSource cancellationTokenSource;
+        public string CommandFlag { get; set; }
+        public bool IsAsync { get; set; }
         public MainViewModel()
         {
             CurrentViewModel = _locator.FlowViewModel;
